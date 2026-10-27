@@ -1,47 +1,122 @@
-# Svelte + TS + Vite
+# CPNS Study Companion 📚
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+> Platform Rangkuman & Rumus Master SKD CPNS (TIU, TWK, TKP) dibangun dengan **Svelte 5**, **TypeScript**, **Tailwind CSS v4**, dan **KaTeX**.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## 🚀 Overview
 
-## Need an official Svelte framework?
+**CPNS Study Companion** (`cpns-svelte`) adalah aplikasi web modern dan interaktif yang dirancang untuk membantu calon Pegawai Negeri Sipil (CPNS) mempelajari dan menguasai materi **Seleksi Kompetensi Dasar (SKD)**. Aplikasi ini menyediakan rangkuman lengkap, rumus cepat, serta contoh soal beserta pembahasan untuk 3 pilar utama tes SKD:
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- **TIU (Tes Intelegensia Umum)**: Berhitung cepat, aljabar, geometri, deret angka, penalaran logis & analitis dengan penulisan rumus matematika berbasis **KaTeX**.
+- **TWK (Tes Wawasan Kebangsaan)**: Rangkuman Pancasila, UUD 1945, Bhinneka Tunggal Ika, NKRI, Nasionalisme, Integritas, dan Bela Negara.
+- **TKP (Tes Karakteristik Pribadi)**: Panduan aspek perilaku, strategi penilaian, dan poin penting pelayanan publik hingga teknologi informasi.
 
-## Technical considerations
+---
 
-**Why use this over SvelteKit?**
+## ✨ Key Features
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- 📐 **Math & Formula Rendering**: Notasi matematika yang rapi dan responsif berbasis [KaTeX](https://katex.org/).
+- 🔍 **Instant Search & Categorization**: Pencarian cepat antar materi, topik, dan contoh soal.
+- 🌓 **Dark & Light Mode**: Dukungan tema gelap dan terang dengan deteksi otomatis preferensi sistem.
+- 📱 **Fully Responsive UI**: Antarmuka bersih dan fleksibel untuk perangkat desktop, tablet, maupun seluler.
+- 🧪 **LaTeX Validation**: Script otomatis untuk memverifikasi validitas rumus matematika dalam himpunan data.
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+---
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+## 🛠️ Tech Stack
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+| Kategori | Teknologi |
+| :--- | :--- |
+| **Frontend Framework** | [Svelte 5](https://svelte.dev/) (dengan Runes `$state`, `$derived`, `$effect`) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Bundler & Build Tool** | [Vite 8](https://vitejs.dev/) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) |
+| **Math Typesetting** | [KaTeX](https://katex.org/) |
+| **Runtime & PM** | [Bun](https://bun.sh/) |
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+---
 
-**Why include `.vscode/extensions.json`?**
+## 📁 Project Structure
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```text
+cpns-svelte/
+├── public/                 # Static assets
+├── scripts/
+│   └── validate-latex.ts   # Script validasi sintaks KaTeX / LaTeX
+├── src/
+│   ├── lib/
+│   │   ├── components/     # Svelte UI components (Header, Sidebar, Content, Stats, dll.)
+│   │   ├── data/           # Data materi SKD (tiu.ts, twk.ts, tkp.ts)
+│   │   ├── state/          # Global state management Svelte 5 (theme, ui)
+│   │   ├── utils/          # Utility helper (KaTeX renderer, math tools)
+│   │   ├── icons.ts        # SVG Icon definitions
+│   │   └── types.ts        # TypeScript interface & type definitions
+│   ├── App.svelte          # Main Application Component
+│   ├── app.css             # Global CSS & Tailwind imports
+│   └── main.ts             # App entry point
+├── package.json            # Project dependencies & scripts
+├── svelte.config.js        # Svelte configuration
+├── tsconfig.app.json       # TypeScript application configuration
+└── vite.config.ts          # Vite configuration
 ```
+
+---
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+Pastikan Anda telah menginstal [Bun](https://bun.sh/) (atau Node.js versi 18+):
+
+```bash
+bun --version
+```
+
+### Installation
+
+1. **Clone repositori**
+   ```bash
+   git clone https://github.com/user/cpns-svelte.git
+   cd cpns-svelte
+   ```
+
+2. **Install dependensi**
+   ```bash
+   bun install
+   ```
+
+---
+
+## 🚀 Development & Build
+
+| Perintah | Deskripsi |
+| :--- | :--- |
+| `bun run dev` | Menjalankan local development server dengan HMR |
+| `bun run build` | Mengompilasi aplikasi untuk produksi |
+| `bun run preview` | Menjalankan server preview dari hasil build |
+| `bun run check` | Memeriksa tipe TypeScript dan sintaks Svelte (`svelte-check`) |
+| `bun run validate:math` | Memvalidasi seluruh notasi LaTeX pada materi TIU |
+
+### Development Mode
+
+```bash
+bun run dev
+```
+Buka browser dan navigasikan ke `http://localhost:5173`.
+
+### Type Check & Math Validation
+
+```bash
+# Periksa kesalahan tipe TypeScript & Svelte
+bun run check
+
+# Validasi ekspresi KaTeX/LaTeX pada data materi
+bun run validate:math
+```
+
+---
+
+## 📄 License
+
+Project ini dilisensikan di bawah [MIT License](LICENSE).
