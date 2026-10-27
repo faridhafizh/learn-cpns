@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo-bkn-1.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi CPNS — Study Dashboard</title>
+
+    <!-- Anti-FOUC -->
+    <script>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-brand-light font-sans text-brand-dark antialiased transition-colors duration-500 dark:bg-brand-dark dark:text-brand-light"
+  >
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
